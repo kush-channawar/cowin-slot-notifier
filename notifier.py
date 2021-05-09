@@ -53,14 +53,14 @@ def sendAlert(center_name):
 
     message = "Found Vacancy at: " + str(center_name)
 
-    account_sid = "AC4d07dd594e06bb9a17f75dcc54539849"
-    auth_token = "bd52a4581afcea5fcc9ba65d05a4f302"
+    account_sid = "{twilio_sid}"
+    auth_token = "{twilio_auth_token}"
     client = Client(account_sid, auth_token)
 
     message = client.messages.create(
         body=message,
-        from_="+15106613834",
-        to="+918999109722"
+        from_="{twilio_number}",
+        to="{recipient_number}"
     )
 
     print("Message Sent. Availbility at " + center_name)
@@ -68,7 +68,6 @@ def sendAlert(center_name):
     msgs_sent += 1
 
 if __name__ == '__main__':
-
     while True:
         try:
             todays_date = datetime.now().strftime("%d-%m-%Y")
